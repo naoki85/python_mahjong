@@ -1,6 +1,6 @@
 import collections as col
 
-class Status:
+class Pretreatment:
     u"""
     手配の条件を整理するクラスです。
     そのままノードとして考えています。

@@ -1,4 +1,5 @@
 import random
+import csv
 
 class MyHand:
     u"""
@@ -29,15 +30,27 @@ class MyHand:
         my_hand.sort()
         return my_hand
 
+    def load_trainig_data(self):
+        u"""
+        CSVファイルから教師データを読み込み、データを返します。
+        @return array
+        [0]で教師データの配牌、[1]で結果を返します
+        """
+        with open('csv/training_data.csv', 'r', newline='') as csvfile:
+            reader = csv.reader(csvfile)
+            header = next(reader)
+            hand = []
+            results = []
+            for row in reader:
+                tmp_hand = []
+                for tile in range(0, 12):
+                    tmp_hand.append(row[tile])
 
-# 出力値
-# 上がれたか上がれないか
-# y = [1, 0]
+                results.append([row[13], row[14]])
+                hand.append(tmp_hand)
 
-# np.array(X).shape = [13,]
-# [3, ]
-# np.array(W1).shape = [3, 2]
-# np.array(b1).shape = [2,]
-# np.array(W2).shape = [3, 2]
-# np.array(b2).shape = [2,]
-# np.array(y).shape = [2, ]
+        return hand, results
+
+
+
+
