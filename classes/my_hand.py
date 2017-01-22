@@ -1,6 +1,4 @@
-import random
-import csv
-import os
+import sys, os, random, csv
 
 class MyHand:
     u"""
@@ -21,6 +19,8 @@ class MyHand:
         self.tiles = (self.characters + self.circles + self.bamboos + self.honours)
         # 山
         self.wall = self.tiles * 4
+        # CSVを格納しているディレクトリのパス
+        self.csv_dirpath = '/Users/user/python_mahjong/csv'
 
     def set_my_hand(self):
         u"""
@@ -28,7 +28,6 @@ class MyHand:
         @return array
         """
         my_hand = random.sample(self.wall, 13)
-        my_hand.sort()
         return my_hand
 
     def load_trainig_data(self):
@@ -37,23 +36,21 @@ class MyHand:
         @return array
         [0]で教師データの配牌、[1]で結果を返します
         """
-        # 相対パスでCSVファイルを取得
-        csv_filepath = os.path.normpath(os.path.join(os.getcwd(), '../csv/training_data.csv'))
-        
+        # CSVファイルのパスを追加
+        #csv_dir = os.path.normpath(os.path.join(os.getcwd(), '../csv/training_data.csv'))
+        csv_filepath = self.csv_dirpath + '/training_data.csv'
+
         with open(csv_filepath, 'r', newline='') as csvfile:
             reader = csv.reader(csvfile)
             header = next(reader)
-            hand = []
+            hands = []
             results = []
             for row in reader:
-                tmp_hand = []
-                for tile in range(0, 12):
-                    tmp_hand.append(row[tile])
+                tmp_hand = [int(tile) for tile in row]
+                results.append([int(row[13]), int(row[14])])
+                hands.append(tmp_hand)
 
-                results.append([row[13], row[14]])
-                hand.append(tmp_hand)
-
-        return hand, results
+        return hands, results
 
 
 

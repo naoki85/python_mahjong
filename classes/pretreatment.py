@@ -6,6 +6,13 @@ class Pretreatment:
     そのままノードとして考えています。
     """
 
+    def get_list_pretreatments(self, my_hand):
+        my_hand.sort()
+        number_of_chows = self.have_number_of_chows(my_hand)
+        number_of_pairs, number_of_pungs = self.have_number_of_pairs_and_pungs(my_hand)
+
+        return [number_of_chows, number_of_pairs, number_of_pungs]
+
     def have_number_of_chows(self, my_hand):
         u"""
         順子の数を数えます
