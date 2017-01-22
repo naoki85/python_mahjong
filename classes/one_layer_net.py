@@ -1,4 +1,5 @@
 import numpy as np
+import pickle
 
 class OneLayerNetwork:
     u"""
@@ -9,6 +10,17 @@ class OneLayerNetwork:
         self.params = {}
         self.params['W'] = weight_init_std * np.random.randn(input_size, output_size)
         self.params['b'] = np.zeros(output_size)
+
+    def load_parameters_from_pickle(self):
+        u"""
+        前回の重み、バイアスの学習結果をpickleファイルから取得する
+        """
+        pickle_filepath = '/Users/user/python_mahjong/pickle/output_results.pickle'
+        with open(pickle_filepath, 'rb') as f:
+            params = pickle.load(f)
+
+        self.params['W'] = params['W']
+        self.params['b'] = params['b']
 
     def predict(self, x):
         u"""
@@ -74,4 +86,13 @@ class OneLayerNetwork:
             
         return grad
 
+    def load_parameters_from_pickle(self):
+        u"""
+        前回の重み、バイアスの学習結果をpickleファイルから取得する
+        """
+        pickle_filepath = '/Users/user/python_mahjong/pickle/output_results.pickle'
+        with open(pickle_filepath, 'rb') as f:
+            params = pickle.load(f)
 
+        self.params['W'] = params['W']
+        self.params['b'] = params['b']

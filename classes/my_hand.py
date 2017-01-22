@@ -25,7 +25,6 @@ class MyHand:
     def set_my_hand(self):
         u"""
         配牌をセットします。
-        @return array
         """
         my_hand = random.sample(self.wall, 13)
         return my_hand
@@ -33,8 +32,6 @@ class MyHand:
     def load_trainig_data(self):
         u"""
         CSVファイルから教師データを読み込み、データを返します。
-        @return array
-        [0]で教師データの配牌、[1]で結果を返します
         """
         # CSVファイルのパスを追加
         #csv_dir = os.path.normpath(os.path.join(os.getcwd(), '../csv/training_data.csv'))
@@ -51,7 +48,3 @@ class MyHand:
                 hands.append(tmp_hand)
 
         return hands, results
-
-
-
-

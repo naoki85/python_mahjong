@@ -1,6 +1,7 @@
 from classes.my_hand import *
 from classes.pretreatment import *
 from classes.one_layer_net import *
+from classes.output import *
 import matplotlib.pylab as plt
 
 learning_rate = 0.01
@@ -26,11 +27,11 @@ for loop in range(0, loop_count):
         one_layer_net.params['W'] -= learning_rate * grads['W']
         one_layer_net.params['b'] -= learning_rate * grads['b']
 
-    print(tmp_total_loss)
     loss_array.append(tmp_total_loss)
 
-print(one_layer_net.params['W'])
-print(one_layer_net.params['b'])
+output = Output()
+output.write_results_in_csv(one_layer_net.params['W'], one_layer_net.params['b'])
+
 x = range(0, 100)
 y = loss_array
 plt.xlabel("x")
