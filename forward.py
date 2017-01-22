@@ -1,6 +1,6 @@
-from my_hand import *
-from pretreatment import *
-from one_layer_net import *
+from classes.my_hand import *
+from classes.pretreatment import *
+from classes.one_layer_net import *
 
 my_hand = MyHand()
 initial_my_hand = my_hand.set_my_hand()

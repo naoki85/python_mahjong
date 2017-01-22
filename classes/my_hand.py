@@ -1,5 +1,6 @@
 import random
 import csv
+import os
 
 class MyHand:
     u"""
@@ -36,7 +37,10 @@ class MyHand:
         @return array
         [0]で教師データの配牌、[1]で結果を返します
         """
-        with open('csv/training_data.csv', 'r', newline='') as csvfile:
+        # 相対パスでCSVファイルを取得
+        csv_filepath = os.path.normpath(os.path.join(os.getcwd(), '../csv/training_data.csv'))
+        
+        with open(csv_filepath, 'r', newline='') as csvfile:
             reader = csv.reader(csvfile)
             header = next(reader)
             hand = []
