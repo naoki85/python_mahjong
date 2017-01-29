@@ -22,9 +22,9 @@ class MyHand:
         # CSVを格納しているディレクトリのパス
         self.csv_dirpath = '/Users/user/python_mahjong/csv'
 
-    def set_my_hand(self):
+    def random_set_my_hand(self):
         u"""
-        配牌をセットします。
+        配牌をランダムにセットします。
         """
         my_hand = random.sample(self.wall, 13)
         return my_hand
@@ -48,3 +48,14 @@ class MyHand:
                 hands.append(tmp_hand)
 
         return hands, results
+
+    def input_my_hand(self):
+        u"""
+        入力された値で13個の要素の配列を返します。
+        """
+        my_hand = []
+        for i in range(13):
+            my_hand.append(int(input(str(i) + ':')))
+        
+        return my_hand
+

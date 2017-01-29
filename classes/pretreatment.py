@@ -16,8 +16,6 @@ class Pretreatment:
     def have_number_of_chows(self, my_hand):
         u"""
         順子の数を数えます
-        @input my_hand 手牌
-        @return integer
         """
         # Pythonではリストの代入は参照渡しなので、新しくオブジェクトを作成
         tmp_my_hand = list(my_hand)
@@ -37,9 +35,6 @@ class Pretreatment:
     def have_number_of_pairs_and_pungs(self, my_hand):
         u"""
         対子と暗刻の数を数えます。
-        @input my_hand 手牌
-        @return integer
-        [0]で対子の数、[1]で暗刻の数を返します。
         """
         number_of_pairs = 0
         number_of_pungs = 0

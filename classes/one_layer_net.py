@@ -77,7 +77,7 @@ class OneLayerNetwork:
             x[idx] = float(tmp_val) + h
             fxh1 = f(x)
             
-            x[idx] = tmp_val - h 
+            x[idx] = tmp_val - h
             fxh2 = f(x)
             grad[idx] = (fxh1 - fxh2) / (2*h)
             
