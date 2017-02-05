@@ -59,3 +59,6 @@ class MyHand:
         
         return my_hand
 
+    def input_my_hand_tmp(self, tiles):
+        return tiles
+
