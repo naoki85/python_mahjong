@@ -7,7 +7,13 @@ button {
 </style>
 <script>
 $(function() {
+    var selected_count = 0;
     $('.tile').on('click', function() {
+        selected_count += 1;
+        if (selected_count > 13) {
+            alert('選択できるのは13枚までです。1度リセットしてください。');
+            return;
+        }
         tile = $(this).val();
         html_input = '<input name="tile" type="hidden" value="' + tile + '" />';
         html_img = '<img src="img/' + tile + '.gif">';
@@ -17,6 +23,9 @@ $(function() {
 });
 </script>
 <div style="text-align: center; max-width: 100%;">
+    <div class="well well-lg" style="text-align: left;">
+        配牌の13牌を選んでね！
+    </div>
     <div>
         % characters = [11,12,13,14,15,16,17,18,19]
         % for char in characters:
@@ -63,7 +72,8 @@ $(function() {
     <div style="clear: both;"></div>
     <hr>
     <form action="show_result" method="get">
-        <br /><input type="submit" value="結果は？" />
+        <br />
+        <input class="btn btn-info" type="submit" value="結果は？" />
+        <input class="btn btn-warning" type="button" onclick="location.href='index'" value="リセット" />
     </form>
-    <input type="button" onclick="location.href='index'" value="リセット" />
 </div>

@@ -1,6 +1,6 @@
 # モジュールの読み込み
 import os
-from bottle import route, get, post, run, template, request, static_file
+from bottle import route, get, post, run, template, request, static_file, redirect
 from classes.my_hand import *
 from classes.pretreatment import *
 from classes.one_layer_net import *
@@ -12,6 +12,10 @@ def index():
 @get('/show_result')
 def show_result():
     tiles = request.query.getlist('tile')
+    if len(tiles) != 13:
+        print('aaa')
+        redirect('/index')
+
     initial_my_hand = []
     for i in range(13):
         initial_my_hand.append(int(tiles[i]))
@@ -26,7 +30,7 @@ def show_result():
     result = one_layer_net.predict(input_data)
     ret_value = int(result[0] * 100)
 
-    return template('show_result', ret_value=ret_value)
+    return template('show_result', my_hand=initial_my_hand, ret_value=ret_value)
 
 @route('/<filename:path>')
 def static(filename):
