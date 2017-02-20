@@ -4,6 +4,7 @@ from bottle import route, get, post, run, template, request, static_file, redire
 from classes.my_hand import *
 from classes.pretreatment import *
 from classes.one_layer_net import *
+from config.http_conf import *
 
 @get('/index')
 def index():
@@ -13,7 +14,6 @@ def index():
 def show_result():
     tiles = request.query.getlist('tile')
     if len(tiles) != 13:
-        print('aaa')
         redirect('/index')
 
     initial_my_hand = []
@@ -38,5 +38,5 @@ def static(filename):
     return static_file(filename, root="/Users/user/python_mahjong/static")
 
 if __name__ == '__main__':
-    run(host='localhost', port=8080, debug=True, reloader=True)
+    bottle_run()
 
