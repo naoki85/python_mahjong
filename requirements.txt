@@ -19,7 +19,7 @@ click==6.6
 cloudpickle==0.2.1
 colorama==0.3.7
 conda==4.3.13
-conda-build==2.0.2
+conda-build==2.1.5
 configobj==5.0.6
 contextlib2==0.5.3
 cryptography==1.5
