@@ -73,7 +73,7 @@ odo==0.5.0
 openpyxl==2.3.2
 pandas==0.18.1
 partd==0.3.6
-path.py==0.0.0
+path.py==10.1
 pathlib2==2.1.0
 patsy==0.4.1
 pep8==1.7.0
