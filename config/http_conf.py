@@ -1,3 +1,4 @@
+import os
 from bottle import run
 def bottle_run():
     # ローカル用の設定
