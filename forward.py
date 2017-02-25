@@ -34,8 +34,8 @@ def show_result():
 
 @route('/<filename:path>')
 def static(filename):
-    print(os.getcwd())
-    return static_file(filename, root="/Users/user/python_mahjong/static")
+    path = os.getcwd() + '/static'
+    return static_file(filename, root=path)
 
 if __name__ == '__main__':
     bottle_run()

@@ -1,5 +1,5 @@
 import numpy as np
-import pickle
+import os, pickle
 
 class OneLayerNetwork:
     u"""
@@ -15,7 +15,8 @@ class OneLayerNetwork:
         u"""
         前回の重み、バイアスの学習結果をpickleファイルから取得する
         """
-        pickle_filepath = '/Users/user/python_mahjong/pickle/output_results.pickle'
+        pickle_filepath = os.getcwd() + '/pickle/output_results.pickle'
+        print(pickle_filepath)
         with open(pickle_filepath, 'rb') as f:
             params = pickle.load(f)
 
@@ -85,14 +86,3 @@ class OneLayerNetwork:
             it.iternext()
             
         return grad
-
-    def load_parameters_from_pickle(self):
-        u"""
-        前回の重み、バイアスの学習結果をpickleファイルから取得する
-        """
-        pickle_filepath = '/Users/user/python_mahjong/pickle/output_results.pickle'
-        with open(pickle_filepath, 'rb') as f:
-            params = pickle.load(f)
-
-        self.params['W'] = params['W']
-        self.params['b'] = params['b']
