@@ -20,7 +20,7 @@ class MyHand:
         # 山
         self.wall = self.tiles * 4
         # CSVを格納しているディレクトリのパス
-        self.csv_dirpath = '/Users/user/python_mahjong/csv'
+        self.csv_dirpath = os.getcwd() + '/csv'
 
     def random_set_my_hand(self):
         u"""
@@ -34,7 +34,6 @@ class MyHand:
         CSVファイルから教師データを読み込み、データを返します。
         """
         # CSVファイルのパスを追加
-        #csv_dir = os.path.normpath(os.path.join(os.getcwd(), '../csv/training_data.csv'))
         csv_filepath = self.csv_dirpath + '/training_data.csv'
 
         with open(csv_filepath, 'r', newline='') as csvfile:

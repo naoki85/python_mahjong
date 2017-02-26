@@ -9,7 +9,7 @@ class Output:
         u"""
         結果をpickelに書き込みます。
         """
-        pickle_filepath = '/Users/user/python_mahjong/pickle/output_results.pickle'
+        pickle_filepath = os.getcwd() + '/pickle/output_results.pickle'
         results = {}
         results['W'] = weight_parameter
         results['b'] = bias_parameter
